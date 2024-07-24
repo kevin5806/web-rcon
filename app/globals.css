@@ -2,32 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.scroll {
+    --sb-track-color: #b5b5b5;
+    --sb-thumb-color: #848484;
+    --sb-size: 6px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 5px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 5px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    .scroll {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+.text-input {
+    background: transparent;
+    color: rgb(255, 255, 255);
+    outline: none;
+    border: solid 1px rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+    overflow: hidden;
+}
+.border-1 {
+    border: solid 1px;
 }
